@@ -18,6 +18,10 @@ class Feed extends CI_Controller {
 		$this->load->view('feed/view', $data);
 	}
 
+	function index() {
+		$this->view();
+	}
+
 	function update_all() {
 		$this->load->library('simplepie');
 		$this->simplepie->cache_location = APPPATH . 'cache';
