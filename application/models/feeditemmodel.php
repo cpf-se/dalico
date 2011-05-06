@@ -47,7 +47,7 @@ class FeedItemModel extends CI_Model {
 
 	public function save() {
 		if ($this->_id !== false) {
-			$this->db->query('UPDATE items SET link = ?, title = ?, text = ?, text = ?, updated_time = NOW() WHERE id = ?', array($this->link, $this->title, $this->text, $this->_id));
+			$this->db->query('UPDATE items SET link = ?, title = ?, text = ?, updated_time = NOW() WHERE id = ?', array($this->link, $this->title, $this->text, $this->_id));
 		} else {
 			$this->db->query('INSERT INTO items(feed_id, remote_id, link, title, text, created_time, updated_time) VALUES (?, ?, ?, ?, ?, NOW(), NOW())', array($this->feed_id, $this->remote_id, $this->link, $this->title, $this->text));
 			$this->_id = $this->db->insert_id();
