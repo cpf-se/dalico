@@ -15,7 +15,7 @@ wwwgroup	= www-data
 
 DEPLOY		= install -m 644
 
-.PHONY: all deploy perms
+.PHONY: all deploy perms reset
 
 all:
 
@@ -25,6 +25,9 @@ deploy: $(confdir)/autoload.php $(confdir)/config.php $(confdir)/database.php $(
 perms:
 	sudo chgrp $(wwwgroup) $(cachedir) $(logdir)
 	sudo chown $(wwwuser)  $(cachedir) $(logdir)
+
+reset:
+	$(MAKE) -C dalico $@
 
 #===============================================================================================
 
