@@ -1,6 +1,6 @@
 
 
-create table patient (
+create table patients (
 	id	serial		not null primary key,
 	token	varchar(8)	not null unique,
 	list	integer		not null references lists (id) on delete restrict on update cascade
