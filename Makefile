@@ -20,6 +20,7 @@ DEPLOY		= install -m 644
 all:
 
 deploy: $(confdir)/autoload.php $(confdir)/config.php $(confdir)/database.php $(confdir)/routes.php perms
+	$(MAKE) -C dalico $@
 
 perms:
 	sudo chgrp $(wwwgroup) $(cachedir) $(logdir)
