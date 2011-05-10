@@ -1,7 +1,7 @@
 #!/bin/sh
 
-PINL='psql -Atd dalico -c'
-PCOM='psql -Atd dalico -f'
+PINL='psql -U dalico -h localhost -Atwd dalico -c'
+PCOM='psql -U dalico -h localhost -Atwd dalico -f'
 
 has () {
 	q="SELECT COUNT(id) FROM files WHERE name = '$1'"
