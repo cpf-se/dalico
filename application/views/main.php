@@ -14,12 +14,11 @@ $CI->pagination->initialize($config);
 </div>
 
 <table>
-<tr><th>token</th><th>lista</th><th>ort</th></tr>
+<tr><th>token</th><th>lista</th></tr>
 <?php foreach ($pats as $pat) { ?>
 <tr>
-	<td><tt><b><?=$pat['token'];?></b></tt></td>
-	<td><?=$pat['list']?></td>
-	<td><?=$pat['vcs']?></td>
+	<td><tt><b><?php echo $pat['token'];?></b></tt></td>
+	<td><?php echo $pat['list'];?> (<?php echo $pat['vcs']; ?>)</td>
 </tr>
 <?php } ?>
 </table>
