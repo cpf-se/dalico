@@ -5,7 +5,7 @@ create table ci_sessions (
 	ip_address	varchar(16)	not null default '0',
 	user_agent	varchar(150)	not null,
 	last_activity	integer		not null default '0',
-	user_data	text		not null
+	user_data	text		not null default ''
 );
 
 create table login_attempts (
@@ -34,16 +34,16 @@ create table user_profiles (
 alter table users add column username varchar(50) not null;
 alter table users add column password varchar(255) not null;
 alter table users add column email varchar(100) not null;
-alter table users add column activated boolean  not null default '1';
-alter table users add column banned boolean  not null default '0';
+alter table users add column activated smallint  not null default '1';
+alter table users add column banned smallint  not null default '0';
 alter table users add column ban_reason varchar(255) default null;
 alter table users add column new_password_key varchar(50) default null;
 alter table users add column new_password_requested timestamp default null;
 alter table users add column new_email varchar(100) default null;
 alter table users add column new_email_key varchar(50) default null;
 alter table users add column last_ip varchar(40) not null;
-alter table users add column last_login timestamp not null default '0000-00-00 00:00:00';
-alter table users add column created timestamp not null default '0000-00-00 00:00:00';
+alter table users add column last_login timestamp not null default NOW();
+alter table users add column created timestamp not null default NOW();
 alter table users add column modified timestamp not null default NOW();
 
 insert into files (name) values ('dalico.06.tank_auth.sql');

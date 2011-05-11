@@ -7,8 +7,8 @@
 | These details are used in emails sent by authentication library.
 |--------------------------------------------------------------------------
 */
-$config['website_name'] = 'Your project';
-$config['webmaster_email'] = 'webmaster@your-site.com';
+$config['website_name'] = 'DALICO';
+$config['webmaster_email'] = 'christian@cpf.se';
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ $config['phpass_hash_strength'] = 8;
 */
 $config['allow_registration'] = TRUE;
 $config['captcha_registration'] = TRUE;
-$config['email_activation'] = TRUE;
+$config['email_activation'] = FALSE;
 $config['email_activation_expire'] = 60*60*24*2;
 $config['email_account_details'] = TRUE;
 $config['use_username'] = TRUE;

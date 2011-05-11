@@ -9,7 +9,7 @@ moddir		= $(appdir)/models
 libdir		= $(appdir)/libraries
 cachedir	= $(appdir)/cache
 logdir		= $(appdir)/logs
-captchadir	= CI/captcha
+captchadir	= htdocs/captcha
 
 wwwuser		= www-data
 wwwgroup	= www-data
