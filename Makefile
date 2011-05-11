@@ -9,6 +9,7 @@ moddir		= $(appdir)/models
 libdir		= $(appdir)/libraries
 cachedir	= $(appdir)/cache
 logdir		= $(appdir)/logs
+captchadir	= CI/captcha
 
 wwwuser		= www-data
 wwwgroup	= www-data
@@ -23,8 +24,8 @@ deploy: $(confdir)/autoload.php $(confdir)/config.php $(confdir)/database.php $(
 	$(MAKE) -C dalico $@
 
 perms:
-	sudo chgrp $(wwwgroup) $(cachedir) $(logdir)
-	sudo chown $(wwwuser)  $(cachedir) $(logdir)
+	sudo chgrp -R $(wwwgroup) $(cachedir) $(logdir) $(captchadir)
+	sudo chown -R $(wwwuser)  $(cachedir) $(logdir) $(captchadir)
 
 reset:
 	$(MAKE) -C dalico $@
