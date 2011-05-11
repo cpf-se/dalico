@@ -1,0 +1,47 @@
+
+body {
+	font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Geneva,sans-serif;
+	font-size: 108%;
+	margin: 2em;
+}
+
+tt {
+	font-family: Courier;
+	font-size: 108%;
+}
+
+th {
+	font-weight: normal;
+	padding: 1ex;
+}
+
+td {
+	border: 1pt solid black;
+	padding: 1ex;
+	vertical-align: top;
+}
+
+td.right {
+	border-right: 3pt solid black;
+}
+
+td.left {
+	border-left: 3pt solid black;
+}
+
+a:link {
+	color: #00f;
+}
+
+a:visited {
+	color: #00f;
+}
+
+a:hover {
+	background-color: yellow;
+}
+
+.pagination {
+	background-color: #ada;
+}
+

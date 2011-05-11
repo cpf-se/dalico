@@ -14,11 +14,33 @@ $CI->pagination->initialize($config);
 </div>
 
 <table>
-<tr><th>token</th><th>lista</th></tr>
+<tr>
+<th>Behörighetskod</th>
+<th>ID-lista</th>
+<th>Dalby&nbsp;1</th>
+<th>Dalby&nbsp;2</th>
+<th>Dalby&nbsp;3</th>
+<th>CRF</th>
+<th>IVP</th>
+<th>6WT</th>
+</tr>
 <?php foreach ($pats as $pat) { ?>
 <tr>
-	<td><tt><b><?php echo $pat['token'];?></b></tt></td>
-	<td><?php echo $pat['list'];?> (<?php echo $pat['vcs']; ?>)</td>
+	<td><tt><b><?=$pat['token']?></b></tt></td>				<!-- Behörighetskod -->
+	<td class="right"><?=$pat['list']?> (<?=$pat['vcs']?>)</td>		<!-- ID-lista -->
+	<td class="left">							<!-- Dalby 1 -->
+<?php
+		if ($pat['vcs'] == 'Dalby') {
+			echo "\t\t<a href='/pdf.pdf'>" . date('Y-m-d', strtotime($pat['datum'])) . "</a>";
+		} else {
+			echo "\t\t" . date('Y-m-d', strtotime($pat['datum']));
+		}
+?></td>
+	<td><tt>YYYY-mm-dd</tt></td>						<!-- Dalby 2 -->
+	<td class="right"><tt>YYYY-mm-dd</tt></td>				<!-- Dalby 3 -->
+	<td class="left"><tt>YYYY-mm-dd</tt></td>				<!-- CRF -->
+	<td><tt>YYYY-mm-dd</tt><br /><tt>YYYY-mm-dd</tt></td>			<!-- IVP -->
+	<td><tt>YYYY-mm-dd</tt></td>						<!-- 6WT -->
 </tr>
 <?php } ?>
 </table>

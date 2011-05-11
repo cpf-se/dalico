@@ -8,5 +8,5 @@ create table users (
 	unique (last, first)
 );
 
-insert into files (name) values ('dalico.03.sql');
+insert into files (name) values ('dalico.03.users.sql');
 

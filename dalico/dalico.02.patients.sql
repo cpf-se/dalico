@@ -19,6 +19,6 @@ insert into patients (token, list) values
 ('jtvxvje', 1),
 ('8vvky6u', 1);
 
-insert into files (name) values ('dalico.02.sql');
+insert into files (name) values ('dalico.02.patients.sql');
 
 

@@ -14,5 +14,5 @@ create table lists (
 
 insert into lists (name, vc) values ('Olsson 1̈́', 1), ('Hallberg 1̈́', 2), ('Olsson 2', 1), ('Nilsson 1̈́', 2), ('Hedberg 1̈́', 2);
 
-insert into files (name) values ('dalico.01.sql');
+insert into files (name) values ('dalico.01.vcs,lists.sql');
 

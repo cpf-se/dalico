@@ -5,5 +5,5 @@ create table files (
 	stamp	timestamp	not null default now()
 );
 
-insert into files (name) values ('dalico.00.sql');
+insert into files (name) values ('dalico.00.files.sql');
 

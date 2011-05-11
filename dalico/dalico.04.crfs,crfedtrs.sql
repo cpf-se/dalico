@@ -56,5 +56,5 @@ create table crfedtrs (
 	stamp	timestamp	not null default now()
 );
 
-insert into files (name) values ('dalico.04.sql');
+insert into files (name) values ('dalico.04.crfs,crfedtrs.sql');
 

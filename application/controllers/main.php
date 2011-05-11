@@ -2,7 +2,7 @@
 
 class Main extends CI_Controller {
 
-	const ITEMS_PER_PAGE = 3;
+	const ITEMS_PER_PAGE = 5;
 
 	function __construct() {
 		parent::__construct();
