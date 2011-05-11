@@ -1,0 +1,50 @@
+
+
+create table ci_sessions (
+	session_id	varchar(40)	not null default '0' primary key,
+	ip_address	varchar(16)	not null default '0',
+	user_agent	varchar(150)	not null,
+	last_activity	integer		not null default '0',
+	user_data	text		not null
+);
+
+create table login_attempts (
+	id		serial		not null primary key,
+	ip_address	varchar(40)	not null,
+	login		varchar(50)	not null,
+	time		timestamp	not null default NOW()
+);
+
+create table user_autologin (
+	key_id		char(32)	not null,
+	user_id		integer		not null default '0',
+	user_agent	varchar(150)	not null,
+	last_ip		varchar(40)	not null,
+	last_login	timestamp	not null default NOW(),
+	primary key (key_id, user_id)
+);
+
+create table user_profiles (
+	id		serial		not null primary key,
+	user_id		integer		not null,
+	country		varchar(20)	default null,
+	website		varchar(255)	default null
+);
+
+alter table users add column username varchar(50) not null;
+alter table users add column password varchar(255) not null;
+alter table users add column email varchar(100) not null;
+alter table users add column activated boolean  not null default '1';
+alter table users add column banned boolean  not null default '0';
+alter table users add column ban_reason varchar(255) default null;
+alter table users add column new_password_key varchar(50) default null;
+alter table users add column new_password_requested timestamp default null;
+alter table users add column new_email varchar(100) default null;
+alter table users add column new_email_key varchar(50) default null;
+alter table users add column last_ip varchar(40) not null;
+alter table users add column last_login timestamp not null default '0000-00-00 00:00:00';
+alter table users add column created timestamp not null default '0000-00-00 00:00:00';
+alter table users add column modified timestamp not null default NOW();
+
+insert into files (name) values ('dalico.06.tank_auth.sql');
+
