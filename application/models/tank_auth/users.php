@@ -181,7 +181,7 @@ class Users extends CI_Model
 	function purge_na($expire_period = 172800)
 	{
 		$this->db->where('activated', 0);
-		$this->db->where('created <', time() - $expire_period);
+		$this->db->where('EXTRACT(EPOCH FROM created) <', time() - $expire_period);
 		$this->db->delete($this->table_name);
 	}
 
@@ -233,7 +233,7 @@ class Users extends CI_Model
 		$this->db->select('1', FALSE);
 		$this->db->where('id', $user_id);
 		$this->db->where('new_password_key', $new_pass_key);
-		$this->db->where('new_password_requested >', time() - $expire_period);
+		$this->db->where('EXTRACT(EPOCH FROM new_password_requested) >', time() - $expire_period);
 
 		$query = $this->db->get($this->table_name);
 		return $query->num_rows() == 1;
@@ -255,7 +255,7 @@ class Users extends CI_Model
 		$this->db->set('new_password_requested', NULL);
 		$this->db->where('id', $user_id);
 		$this->db->where('new_password_key', $new_pass_key);
-		$this->db->where('new_password_requested >=', time() - $expire_period);
+		$this->db->where('EXTRACT(EPOCH FROM new_password_requested) >=', time() - $expire_period);
 
 		$this->db->update($this->table_name);
 		return $this->db->affected_rows() > 0;
