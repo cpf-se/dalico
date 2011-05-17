@@ -2,3 +2,5 @@ autoload.php
 config.php
 database.php
 routes.php
+tank_auth.php
+email.php
