@@ -25,9 +25,5 @@ class Main extends CI_Controller {
 			redirect('/auth/login/');
 		}
 	}
-
-//	function index($offset = 0) {
-//		$this->view($offset);
-//	}
 }
 
