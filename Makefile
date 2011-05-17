@@ -1,46 +1,35 @@
 
-srcdir		= $(HOME)/DALICO_FILES
+srcdir		= $(shell readlink -f $(HOME)/DALICO_FILES)
+dbdir		= $(shell readlink -f dalico-db)
 
-appdir		= application
-confdir		= $(appdir)/config
-ctrldir		= $(appdir)/controllers
-viewdir		= $(appdir)/views
-moddir		= $(appdir)/models
-libdir		= $(appdir)/libraries
-cachedir	= $(appdir)/cache
-logdir		= $(appdir)/logs
-captchadir	= htdocs/captcha
+appdir		= $(shell readlink -f application)
+export confdir	= $(shell readlink -f $(appdir)/config)
+ctrldir		= $(shell readlink -f $(appdir)/controllers)
+viewdir		= $(shell readlink -f $(appdir)/views)
+moddir		= $(shell readlink -f $(appdir)/models)
+libdir		= $(shell readlink -f $(appdir)/libraries)
+cachedir	= $(shell readlink -f $(appdir)/cache)
+logdir		= $(shell readlink -f $(appdir)/logs)
+captchadir	= $(shell readlink -f htdocs/captcha)
 
 wwwuser		= www-data
-wwwgroup	= www-data
+CHOWN		= sudo chown -R
 
-DEPLOY		= install -m 644
+wwwgroup	= www-data
+CHGRP		= sudo chgrp -R
 
 .PHONY: all deploy perms reset
 
 all:
 
-deploy: $(confdir)/autoload.php $(confdir)/config.php $(confdir)/database.php $(confdir)/routes.php perms
-	$(MAKE) -C dalico $@
+deploy: $(srcdir) $(dbdir) perms
+	$(MAKE) -C $(srcdir) $@
+	$(MAKE) -C $(dbdir) $@
 
 perms:
-	sudo chgrp -R $(wwwgroup) $(cachedir) $(logdir) $(captchadir)
-	sudo chown -R $(wwwuser)  $(cachedir) $(logdir) $(captchadir)
+	$(CHGRP) $(wwwgroup) $(cachedir) $(logdir) $(captchadir)
+	$(CHOWN) $(wwwuser)  $(cachedir) $(logdir) $(captchadir)
 
 reset:
-	$(MAKE) -C dalico $@
-
-#===============================================================================================
-
-$(confdir)/autoload.php: $(srcdir)/autoload.php
-	$(DEPLOY) $< $@
-
-$(confdir)/config.php: $(srcdir)/config.php
-	$(DEPLOY) $< $@
-
-$(confdir)/database.php: $(srcdir)/database.php
-	$(DEPLOY) $< $@
-
-$(confdir)/routes.php: $(srcdir)/routes.php
-	$(DEPLOY) $< $@
+	$(MAKE) -C $(dbdir) $@
 
